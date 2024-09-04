@@ -6,6 +6,8 @@
     <title>Page <%= num %></title>
 </head>
 <body>
+    <%- include('menu.ejs'); -%>
     <h1>Ceci est la page <%= num %></h1>
+    <a href="/page=<%= Number(num)+1 %>">Page suivante</a>
 </body>
 </html>
