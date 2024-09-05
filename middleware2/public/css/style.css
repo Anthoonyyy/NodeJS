@@ -1,0 +1,9 @@
+body{
+    background: linear-gradient(90deg, hsla(177, 87%, 79%, 1) 0%, hsla(235, 89%, 70%, 1) 100%);
+
+}
+h1{
+    color: dodgerblue;
+    font-weight: bold;
+}
+

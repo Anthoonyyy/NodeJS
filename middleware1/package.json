@@ -1,0 +1,19 @@
+{
+  "name": "middleware1",
+  "version": "1.0.0",
+  "description": "Exemple d'application express utilisant des middlewares",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+
+  },
+  "author": "Anthony",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}

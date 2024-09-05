@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page <%= num %></title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<main style="width:640px; margin:0 auto;">
+    <h1 style="text-align:center">Ceci est la page <%= num %></h1>
+    <div style="float:left;">
+        <% if (Number(num) > 1) { %>
+            <p>Consulter la page <a href="/page=<%= Number(num)-1 %>">précédente</a></p>
+        <% } else { %>
+            <p>Pas de page précédente</p>
+        <% } %>
+    </div>
+    <div style="float: right;">
+        <% if ((Number(num) >= 1) && (Number(num) < 10)) { %>
+            <p>Consulter la page <a href="/page=<%= Number(num)+1 %>">suivante</a></p>
+        <% } else { %>
+            <p>Pas de page suivante</p>
+        <% } %>
+    </div>
+</main>
+</body>
+</html>
