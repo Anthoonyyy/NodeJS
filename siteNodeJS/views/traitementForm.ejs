@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>Traitement formulaire</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<div>
+<%- include('banniere.ejs'); -%>
+<%- include('menu.ejs'); -%>
+<h1 class="center">Traitement Formulaire</h1>
+<h3 class="center">Bonjour <%= nom %> <%= prenom %></h3>
+<p class="center">Nous avons bien reçu votre message :</p>
+<p class="center">Votre ville : <%= ville %> </p>
+<p class="center">Votre email :<%= email %> </p>
+<p class="center"> Votre message : <%= msg %> </p>
+<br>
+<p><a href="/" style="float: left">Retour vers l'accueil</a></p>
+<p><a href="/contact" style="float: right">Envoyez un autre message</a></p>
+</div>
+</body>
+</html>

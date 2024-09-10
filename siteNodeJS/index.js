@@ -34,5 +34,18 @@ app.get('/liens',function(requete,reponse){
     reponse.render('liens.ejs',{title:"Bruxelles - Liens"});
 });
 
+let urlencodedParser = express.urlencoded({extended:false});
+
+app.post('/traitement', urlencodedParser,function (req, res, next){
+    let lenom = req.body.nom;
+    let leprenom = req.body.prenom;
+    let laville = req.body.ville;
+    let lemail = req.body.email;
+    let lemessage = req.body.msg;
+
+    res.render('traitementForm.ejs',{ nom: lenom, prenom: leprenom,
+    ville: laville, email: lemail, msg: lemessage});
+});
+
 app.listen(8080);
 console.log("En attente de la requête..");
