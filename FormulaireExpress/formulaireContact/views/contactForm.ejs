@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title><%= titre %></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<h1>Formulaire de contact</h1>
+<form name="contact" method="POST" action="/traitement">
+    <label for="nom">Nom :</label>
+    <input id="nom" name="nom" type="text" placeholder="Entrez votre nom">
+    <br />
+    <label for="msg">Votre message :</label>
+    <input id="msg" name="msg" type="text" placeholder="Entrez votre message">
+    <br>
+    <input type="submit" value="Envoyer">
+</form>
+</body>
+</html>
