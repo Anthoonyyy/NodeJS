@@ -6,6 +6,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 //var usersRouter = require('./routes/users');
+var messagesRouter = require('./routes/messages'); //router qui gère les opérations de message
 
 var app = express();
 
@@ -21,6 +22,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 //app.use('/users', usersRouter);
+app.use('/messages', messagesRouter); // Ce router regroupe les URL pointant vers des méthodes de gestion de messages
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
