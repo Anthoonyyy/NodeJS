@@ -34,12 +34,12 @@ Message.readAll = function (resultat) {
     db.query("SELECT * FROM messages ORDER BY datemessage DESC", function (err,res){
         // Si erreur dans la lecture de données
         if (err) {
-            console.log("Erreur Message.readAll :", err);
+            console.log("Erreur lors de la lecture dans Message.readAll :", err);
             resultat(err,null);
             return;
         }
         // Si données reçues
-        console.log("Réponse Message.readAll :", res);
+        console.log("Ok dans Message.readAll :", res);
         resultat(null,res);
     });
 };
