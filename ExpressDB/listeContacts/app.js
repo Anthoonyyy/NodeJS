@@ -5,8 +5,10 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-//var usersRouter = require('./routes/users');
-var messagesRouter = require('./routes/messages'); //router qui gère les opérations de message
+//var usersRouter = require('./routes/users'); // pas nécessaire
+
+// nouveau routeur pour la gestion des messages
+var messagesRouter = require('./routes/messages');
 
 var app = express();
 
@@ -21,8 +23,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-//app.use('/users', usersRouter);
-app.use('/messages', messagesRouter); // Ce router regroupe les URL pointant vers des méthodes de gestion de messages
+//app.use('/users', usersRouter);   // pas nécessaire
+
+// nouveau routeur pour la gestion des messages
+// pour les URL du type : localhost:8080/messages/...
+app.use('/messages', messagesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
