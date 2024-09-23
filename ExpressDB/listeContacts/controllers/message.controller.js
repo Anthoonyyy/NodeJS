@@ -14,7 +14,7 @@ exports.create = (req, res) => {
     let lemessage = req.body.msg;
 
     // Valider le contenu du formulaire
-    if ((!req.body)||(lenom="")||(lemessage=="")) {
+    if ((!req.body)||(lenom=="")||(lemessage=="")) {
         console.log("Le formulaire est incomplet ! ");
         res.redirect('/contact'); // retour vers le formulaire
     } else {
