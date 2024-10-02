@@ -1,0 +1,17 @@
+<%- include('header.ejs') -%>
+
+<header>
+    <h1><%= title %></h1>
+</header>
+
+<section id="messages">
+    <!-- Si on reçois des données, on affiche les messages -->
+     <article>
+            <p>Envoyé par <%= donnees.nom %>,le <%= moment(donnees.datemessage).format('DD-MMM-YYYY HH:mm:ss') %></p>
+            <h4><%= donnees.message %></h4>
+        </article>
+
+
+</section>
+<p><a href="/">Retour vers l'accueil</a> </p>
+<%- include('footer.ejs') -%>
