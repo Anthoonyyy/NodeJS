@@ -1,0 +1,22 @@
+<%- include('header.ejs') -%>
+
+<main>
+    <h1><%= title %></h1>
+    <h3><a href="/users/login">Déjà enregistré ?</a> </h3>
+    <br>
+    <form action="/users/register" method="post">
+        <label for="nom">Nom : </label>
+        <input type="text" name="nom" id="nom" required autofocus>
+        <br>
+        <label for="email">Email : </label>
+        <input type="email" name="email" id="email" required>
+        <br>
+        <label for="motdepasse">Mot de passe : </label>
+        <input type="password" name="motdepasse" id="motdepasse" required>
+        <br>
+        <input type="submit" value="S'enregistrer">
+    </form>
+</main>
+
+
+<%- include('footer.ejs') -%>

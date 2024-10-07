@@ -23,7 +23,7 @@ exports.loginform = (req,res) => {
 exports.login = (req,res) => {
 
 };
-// Se déconnecter 
+// Se déconnecter
 exports.logout = (req,res) => {
 
 };
