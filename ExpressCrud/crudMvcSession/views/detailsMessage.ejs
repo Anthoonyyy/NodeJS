@@ -1,17 +1,13 @@
-<%- include('header.ejs') -%>
+<%- include("header.ejs") -%>
 
-<header>
-    <h1><%= title %></h1>
-</header>
+<h1><%= title %></h1>
+<main>
+    <article>
+        <p>Message #<%= donnees.id %> - Envoyé par <%= donnees.nom %>, <%= moment(donnees.datemessage).format('[le] dddd DD MMMM YYYY [à] HH:mm:ss') %></p>
+        <p><strong><%= donnees.message %></strong></p>
+    </article>
+    <hr>
+    <a href="/messages/">Retour à la liste</a>
+</main>
 
-<section id="messages">
-    <!-- Si on reçois des données, on affiche les messages -->
-     <article>
-            <p>Envoyé par <%= donnees.nom %>,le <%= moment(donnees.datemessage).format('DD-MMM-YYYY HH:mm:ss') %></p>
-            <h4><%= donnees.message %></h4>
-        </article>
-
-
-</section>
-<p><a href="/">Retour vers l'accueil</a> </p>
-<%- include('footer.ejs') -%>
+<%- include("footer.ejs") -%>

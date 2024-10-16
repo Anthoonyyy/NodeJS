@@ -149,7 +149,7 @@ exports.update = (req,res) => {
                     message: "Erreur pendant la modification du message"
                 });
             } else{
-                res.redirect('messages/list');
+                res.redirect('/messages/list');
             }
         });
     }
@@ -172,7 +172,7 @@ exports.deleteById = (req,res) => {
             }
         } else{
             const titrePage = "Suppression du message " + req.params.id;
-            res.render('confirmMessage', {title: titrePage, donnees: data});
+            res.render('confirm_form', {title: titrePage, donnees: data});
         }
     });
 };
@@ -186,7 +186,7 @@ exports.delete = (req,res) => {
     // Valider contenu requête
     if (!req.body) {
         console.log('Le contenu ne peut pas être vide');
-        res.redirect('messages/confirm/' + req.body.id);
+        res.redirect('/messages/confirm/' + req.body.id);
     } else {
         console.log(req.body);
 
@@ -196,7 +196,7 @@ exports.delete = (req,res) => {
                     message: "Erreur lors de la suppression du message"
                 });
             } else {
-                res.redirect('messages/list');
+                res.redirect('/messages/list');
             }
         });
     }

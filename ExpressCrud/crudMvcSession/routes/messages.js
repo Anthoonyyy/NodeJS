@@ -1,45 +1,58 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
-// Contrôleur des messages
-const messages = require("../controllers/message.controller");
+const messages = require('../controllers/message.controller.js');
 
-console.log('On passe dans routes/messages.js');
+console.log('On passe dans : routes/messages.js');
 
-                // Lire les messages
+// Middleware pour tester si l'utilisateur est loggé
+const redirectLogin = (req,res,next)=>{
+    if (req.session.userId) {
+        console.log("redirectLogin - loggé : ",req.session.userId);
+        next();
+    } else {
+        console.log("redirectLogin - pas loggé !");
+        res.redirect('/users/login');
+    }
+};
 
-// Afficher tous les messages sous forme d'un tableau (admin)
-router.get('/', messages.readAll);
+/* ===== Lire toutes les données ===== */
 
-// Afficher tous les messages sous forme de liste (utilisateur)
+// Lire sous forme d'un tableau (vue pour l'admin)
+router.get('/',redirectLogin,  messages.readAll);
 
+// Lire sour forme d'une liste (vue pour le visiteur)
 router.get('/list', messages.list);
 
-// Lire un seul message selon son id
-router.get('/read/:id', messages.readById);
+/* ===== Ajout d'un message =====*/
 
-                // Création d'un message
-
-// Afficher le formulaire d'ajout pour définir le message
+// Afficher le formulaire avant insertion
 router.get('/newmsg', messages.newmsg);
 
-// Sauvegarder dans la DB le nouveau message
-
+// Envoyer les données à ajouter dans la DB
 router.post('/create', messages.create);
 
-// Mettre à jour un message
-// afficher le formulaire avec les données existantes
-router.get('/edit/:id', messages.updateById);
+/* ===== Lecture d'un seul message, après sélection de ce message ===== */
 
-// Mise à jour dans la DB
-router.post('/update/:id', messages.update);
+router.get('/read/:id', redirectLogin, messages.readById);
 
-                // Supprimer un message
+/* ===== Mise à jour ===== */
 
-//Affiche les données existantes attendre confirmation avant la suppression
-router.get('/confirm/:id', messages.deleteById);
+// Voir les données existantes pour les afficher, avant modification
+router.get('/edit/:id', redirectLogin, messages.updateById);
 
-// Supprimer dans la DB après confirmation
-router.post('/delete/:id', messages.delete);
+// Effectuer la mise à jour dans la DB
+router.post('/update/:id', redirectLogin, messages.update);
 
+/* ===== Suppression ===== */
+
+// Voir les données existantes et attendre la confirmation avant de supprimer
+router.get('/confirm/:id', redirectLogin, messages.deleteById);
+
+// Effectuer la suppression des données après confirmation
+router.post('/delete/:id', redirectLogin, messages.delete);
+
+/* ===== Export ===== */
+
+// on exporte ce module pour être utilisé ailleurs dans l'application
 module.exports = router;

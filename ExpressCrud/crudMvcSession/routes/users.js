@@ -1,28 +1,27 @@
 var express = require('express');
 var router = express.Router();
 
-// Importation du contrôleur des utilisateurs
-let users = require('../controllers/user.controller.js');
+const users = require("../controllers/user.controller.js");
 
-// Aller sur la page d'accueil de l'utilisateur connecté
+console.log("On passe dans routes/users.js");
+
+// Page d'accueil
 router.get('/', users.home);
 
 // Affichage du formulaire d'enregistrement
-router.get('/register',users.registerform);
+router.get('/register', users.register_form);
 
-// Sauvegarder les données d'enregistrement du nouvel user
+// Enregistrement dans la DB d'un nouvel utilisateur
 router.post('/register', users.register);
 
 // Affichage du formulaire de connexion
-router.get('/login', users.loginform);
+router.get('/login', users.login_form);
 
-// Connexion de l'user
+// Connexion d'un utilisateur (login)
 router.post('/login', users.login);
 
-// Déconnexion de l'user
+// Déconnexion d'un utilisateur (logout)
 router.get('/logout', users.logout);
 
-
-
-
+// Export du module
 module.exports = router;
